@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Little Universe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Quicksand:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+
+  <!-- ================= AMBIENT BACKGROUND ================= -->
+  <div class="sky" id="sky" aria-hidden="true">
+    <div class="nebula nebula--1"></div>
+    <div class="nebula nebula--2"></div>
+    <div class="nebula nebula--3"></div>
+    <div class="stars-layer" id="starsLayer"></div>
+    <div class="orbit-field" id="orbitField"></div>
+    <div class="shooting-star-layer" id="shootingLayer"></div>
+    <svg class="constellation-layer" id="constellationLayer" viewBox="0 0 1600 900" preserveAspectRatio="none"></svg>
+  </div>
+
+  <!-- ================= CUSTOM CURSOR ================= -->
+  <div class="cursor-moon" id="cursorMoon" aria-hidden="true">
+    <div class="cursor-moon__glow"></div>
+    <div class="cursor-moon__body"></div>
+  </div>
+
+  <!-- ================= TOP CONTROLS ================= -->
+  <div class="controls" role="toolbar" aria-label="Site controls">
+    <button class="control-btn" id="themeToggle" title="Toggle day / night sky" aria-label="Toggle light and dark mode">
+      <span class="control-btn__icon" id="themeIcon">☾</span>
+    </button>
+
+    <div class="music-control">
+      <button class="control-btn" id="musicToggle" title="Play / pause music" aria-label="Toggle background music">
+        <span class="control-btn__icon" id="musicIcon">♪</span>
+      </button>
+      <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="40" aria-label="Volume">
+    </div>
+  </div>
+
+  <audio id="bgMusic" src="music.mp3" loop preload="none"></audio>
+
+  <!-- ================= LANDING ================= -->
+  <main class="landing" id="landing">
+    <p class="eyebrow"><span class="eyebrow__dot"></span> a small universe, charted for you</p>
+    <h1 class="landing__title">✨ Hey My Love ✨</h1>
+    <p class="landing__subtitle">How are you feeling today?</p>
+
+    <div class="card-field" id="cardField">
+
+      <button class="letter-card" data-letter="1" style="--delay:0s; --tilt:-3deg;">
+        <span class="letter-card__glow"></span>
+        <span class="letter-card__sector">SECTOR 01 · BLUE MOON</span>
+        <span class="letter-card__icon">💙</span>
+        <span class="letter-card__label">Open me if you are sad</span>
+        <span class="letter-card__sparkles" aria-hidden="true"></span>
+      </button>
+
+      <button class="letter-card" data-letter="2" style="--delay:0.6s; --tilt:2deg;">
+        <span class="letter-card__glow"></span>
+        <span class="letter-card__sector">SECTOR 02 · MARS</span>
+        <span class="letter-card__icon">❤️</span>
+        <span class="letter-card__label">Open me if you are mad at me</span>
+        <span class="letter-card__sparkles" aria-hidden="true"></span>
+      </button>
+
+      <button class="letter-card" data-letter="3" style="--delay:1.2s; --tilt:-1.5deg;">
+        <span class="letter-card__glow"></span>
+        <span class="letter-card__sector">SECTOR 03 · GALAXY</span>
+        <span class="letter-card__icon">🌙</span>
+        <span class="letter-card__label">Open me if you are stressed</span>
+        <span class="letter-card__sparkles" aria-hidden="true"></span>
+      </button>
+
+    </div>
+
+    <p class="landing__hint">tap a card to open it</p>
+  </main>
+
+  <!-- ================= ENVELOPE + LETTER OVERLAY ================= -->
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <div class="overlay__backdrop" id="overlayBackdrop"></div>
+
+    <div class="envelope-stage" id="envelopeStage">
+      <div class="envelope" id="envelope">
+        <div class="envelope__back"></div>
+        <div class="envelope__letter-peek"></div>
+        <div class="envelope__flap"></div>
+        <div class="envelope__seal">💌</div>
+      </div>
+      <div class="gather-stars" id="gatherStars"></div>
+    </div>
+
+    <section class="letter-card-open" id="letterCardOpen">
+      <button class="letter-close" id="letterClose" aria-label="Close letter">✕</button>
+
+      <div class="letter-deco" id="letterDeco" aria-hidden="true"></div>
+
+      <p class="letter-sector" id="letterSector"></p>
+      <h2 class="letter-title" id="letterTitle"></h2>
+      <div class="letter-body" id="letterBody"><p><span id="typedText"></span><span class="type-cursor" id="typeCursor">|</span></p></div>
+
+      <p class="letter-signoff" id="letterSignoff">— always yours, under every sky 🌌</p>
+    </section>
+  </div>
+
+  <!-- ================= NOTIFICATIONS ================= -->
+  <div class="notif-stack" id="notifStack" aria-live="polite"></div>
+
+  <!-- ================= CLICK BURST LAYER ================= -->
+  <div class="burst-layer" id="burstLayer" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
